@@ -1,0 +1,59 @@
+{% extends 'games/base.html' %}
+
+
+{% block content %}
+{% load mygame %}
+
+{% load custom_filter %}
+<div class="container">
+  <div class="border rounded p-4 m-4">
+    <p class="display-4 pl-4 ml-4">Enrolled-Events</p>
+    
+    <hr>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Sno.</th>
+          <th>Image</th>
+          <th>Game</th>
+          <th>Date</th>
+          <th>Price</th>
+          <th>Total</th>
+         
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for usergame in usergame %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td><img style="height: 80px;" class="" src="{{usergame.events.Event_Image.url}}" alt=""></td>
+          <td>{{usergame.events.Event_Name}}</td>
+          <td>{{usergame.date}}</td>
+          <td>{{usergame.price|currency}}</td>
+          <td>{{usergame|price_total:request.session.mygame|currency}}</td>
+       
+        </tr>
+
+        {% endfor %}
+
+      </tbody>
+
+   
+    </table>
+    
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

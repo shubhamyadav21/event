@@ -1,0 +1,58 @@
+{%extends 'games/base.html' %}
+
+{%block content%}
+
+<section class="container-fluid bg login">
+    <section class="row justify-content-center ">
+        <section class="col-12 col-sm-6 col-md-3 ">
+
+            <form class="form-container" method="POST" action="">
+                {% csrf_token %}
+                {%if error%}
+                <div class="alert alert-danger" role="alert" id="no">
+                    {{error}}
+                </div>
+                {%endif%}
+                <div class="card-header rounded-pill">
+                    Login
+                </div>
+                <hr style="height: 5px;">
+
+
+                <div class="row">
+                    <!--Email Address-->
+
+                    <div class="form-group ">
+                        <label for="" class="form-label">Email address</label>
+                        <input required type="email" class="form-control" id="exampleInputEmail" name="eaddress"
+                            value="{{values.email}}">
+                    </div>
+
+                    <!--Password-->
+
+                    <div class="form-group ">
+                        <label for="" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" name="pass">
+                    </div>
+              
+                 <p style="text-align: center; margin-top:2rem ;"  >Not Register ? :-<a href="{% url 'signup' %}">SigUp</a></p>
+
+                 <p style="text-align: center; margin-top:0.5rem ;"  ><a href="{% url 'password_reset' %}">Forgotten Password ?</a></p>
+
+
+                    
+                    <div class=" form-btn  ">
+                        <input type="submit" class="w-100 btn btn-outline-dark btn-lg rounded-pill" value="Submit">
+                    </div>
+
+                    
+
+                </div>
+            </form>
+            
+        </section>
+    </section>
+</section>
+
+
+{%endblock content%}

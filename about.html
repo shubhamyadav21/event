@@ -1,0 +1,227 @@
+{% extends 'games/base.html' %}
+{%load static%}
+{% block content%}
+
+
+
+<style>
+
+#detailofproject{
+  background-attachment: fixed;
+  background:  -webkit-linear-gradient(180deg,rgba(190, 11, 122, 0.333),rgba(136, 178, 64, 0.333));
+}
+#dtlheading {
+  margin-bottom: 3rem;
+  margin-top: 2rem;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+#detailofprg {
+  padding-bottom: 5rem;
+  box-sizing: border-box;
+  
+}
+#our-team{
+  background-color:rgb(220, 221, 212);
+  background-attachment: fixed;
+  text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 2rem;   
+}
+.teamcard img {
+  border: 12px solid rgb(236, 233, 233);
+}
+.teamcard {
+  border-radius: 10px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20rem;
+  height: 28rem;
+  padding: 0.5rem;
+  color: rgb(19, 18, 18);
+  box-shadow: 3px 3px  10px rgba(24, 22, 22);
+  background: -webkit-linear-gradient(left, rgba(190, 11, 122, 0.333), rgba(136, 178, 64, 0.333));
+  transition: .5s;
+}
+#our-team .teamcol .teamcard:hover{
+transform: translate(-20px);
+}
+.teamcard #team-body { 
+ text-align: center;
+  box-sizing: border-box;
+}
+
+.teamcol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  margin-top: 12px;
+}
+
+.center-heading .icon {
+    display: inline-block;
+    font-size: 28px;
+    line-height: 21px;
+    width: 150px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .center-heading .icon:before {
+    display: inline-block;
+    content: "";
+    border-bottom: 1px solid black;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 50px;
+  }
+
+  .center-heading .icon:after {
+    display: inline-block;
+    content: "";
+    border-bottom: 1px solid black;
+    position: absolute;
+    right: 0;
+    top: 10px;
+    width: 50px;
+  }
+</style>
+
+<body>
+ <!----------------------  project detail ---------------------->
+ <section id="projectdetail">
+    <div class="container">
+        <div class="row text-center clearflix">
+            <div class="col-sm-12 col-sm-offset-2">
+                <div class="projectdetail-heading">
+                    <h1 class="title-one "> ABOUT PROJECT </h1>
+                    <p>This Website is complete responsive.<br>
+                        To make website like this you know tha basic knowledge of HTML,CSS and JAVASCRIPT for the
+                        Frontend.
+                        <br> The aim purpose of the project is to simplify the process of handling each event by
+                        providing a web
+                        interface to participents.
+                        <br> The man work will reduce and the machine work will increase which will result in the
+                        reduced error
+                        caused in the event management.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+ <!-------------  detail  ------------------ -->
+    <section id="detailofproject">
+        <div class="container" id="detailofprg">
+            <div class="row">
+                <h3 id="dtlheading">The Detail Of The Project</h3>
+    
+                    <div class="col">
+                        <h3> Frontend </h3>
+                        <ul>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JAVASCRIPT</li>
+                            <li>BOOSTRAP</li>
+                        </ul>
+                    </div>
+    
+                    <div class="col">
+                        <h3> Backend </h3>
+                        <P>DJANGO <br>
+                            SQL LITE <br>
+                            XML <br>
+                            BOOSTRAP <br>
+                        </P>
+                    </div>
+    
+                    <div class="col">
+                        <h3> Features</h3>
+                        Built with Bootstrap <br>
+                        100% responsive <br>
+                        Well Documented <br>
+                        Font Awesome icons <br>
+                        Well-structured <br>
+                    </div>
+    
+            </div>
+        </div>
+    </section>
+
+   
+ <!--------------------  card --------------- --->
+
+   <section id="our-team"> 
+       <h1 id="teamh1"> Meet the Team</h1>  
+       
+      <div class="center-heading text-center">
+        <span class="icon"><i class="fas fa-users"></i></span>
+      </div>
+
+    <div class="container clearflix">
+        <div class="row">
+
+            <div class="col teamcol">
+                <div class="card teamcard">
+                    <img class="rounded-circle " width="200px" height="200px" src="{% static 'games/staticimg/shubham.jpeg' %}">
+                    <div class="card-body" id="team-body">
+                        <h3>SHUBHAM</h3>
+                        <p class="card-text">Front-End Part</p>
+                        <div class="social icons">
+                            <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
+                            <a href="#"><i class="fab fa-instagram fa-2x"></i></a>
+                            <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
+                            <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" col teamcol">
+                <div class="card teamcard">
+                    <img class="rounded-circle " width="200px" height="200px" src="{% static 'games/staticimg/suraj.jpeg' %}">
+                    <div class="card-body" id="team-body">
+                        <h3>SURAJ</h3>
+                        <p class="card-text"> Back-End Part</p>
+                        <div class="social icons">
+                            <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
+                            <a href="#"><i class="fab fa-instagram fa-2x"></i></a>
+                            <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
+                            <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+   </section>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--------------- jquery --------------------->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+</body>
+
+
+
+{% endblock content%}

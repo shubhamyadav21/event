@@ -1,0 +1,117 @@
+{%extends 'games/base.html'%}
+{%load static%}
+{%load custom_filter%}
+{%load mygame%}
+{%block content%} 
+
+<!-----------------------------------------------  Carousel start  -------------------------------------------->
+
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></li>
+        <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></li>
+        <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{% static 'games/staticimg/people.jpg' %}" class="d-block w-100" alt="...">
+            <div class="carousel-caption ">
+                <h5>DANCE</h5>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            </div>
+        </div>
+
+        <div class="carousel-item ">
+            <img src="{% static 'games/staticimg/pubg.jpg' %}" class="d-block w-100  ">
+            <div class="carousel-caption ">
+                <h5>PUBG</h5>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'games/staticimg/party-people.jpg' %}" class="d-block w-100" alt="...">
+            <div class="carousel-caption ">
+                <h5>DJ-NIGHT</h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </div>
+        
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </a>
+</div>
+
+<!------------------------------Alert start -------------------------->
+
+<div class="alert alert-dark alert-dismissible fade show" role="alert">
+    <strong style="color: red;">Alert...! : </strong> Please wear Mask, Use Sanitizer <strong style="color: rgb(1, 10, 61);"> THANK YOU !</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<!------------------------------Card start------------------------->
+
+<div class="container " id="gamecardcontainer">
+    <div class="row ">
+
+        
+        <!------------------------ Card start--------------------------------->
+        {%for events in events %}
+        <div class="col-lg-4 col-md-6 col-sm-12  ">
+            <div class="card" id="gamescard">
+                
+                <img src="{{events.Event_Image.url}}" class="card-img-top" alt="...">
+                <div class="card-body" id="{{events.id}}">
+                    <h5 class="card-title">{{events.Event_Name}}</h5>
+                    <ul class="list-group list-group-flush ">
+                        <strong>
+                            <li class="list-group-item"><i class="fas fa-user-alt"></i> Event Head:- {{events.Event_Head}}</li>
+                        </strong>
+                        <strong>
+                            <li class="list-group-item"><i class="fas fa-rupee-sign"></i> Entry Fee:- {{events.Event_Price|currency}}</li>
+                        </strong>
+                        <strong>
+                            <li class="list-group-item"><i class="fas fa-calendar-alt"></i> Date:- {{events.Event_DateTime}}</li>
+                        </strong>
+                        <strong>
+                            <li class="list-group-item"><i class="fas fa-home"></i> Class Room:- {{events.Event_ClassRoom}}</li>
+                        </strong>
+                        <!--{{events|is_in_mygame:request.session.mygame}}-->
+                    </ul>
+                    <div class="card-button mt-3" >
+                        {%if events|is_in_mygame:request.session.mygame %}
+                        <form action="" method="POST" >
+                            {%csrf_token%}
+                          <input hidden type="text" name="game_id" value="{{events.id}}">
+                          <input type="submit" class="w-100 btn btn-primary rounded-pill" value="YOU ARE IN">
+                        </form>
+                        {%else%}
+                        <form action="/#{{events.id}}" method="POST" >
+                            {%csrf_token%}
+                            <input hidden type="text" name="game_id" value="{{events.id}}">
+                          <input type="submit" class=" w-100 btn btn-primary rounded-pill " value="JOIN">
+                        </form>
+                        {%endif%}
+                    </div>
+                    
+                    <!--<a href="" class="btn btn-primary rounded-pill">JOIN</a>-->
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+        <!----------- Card end------------->
+
+    </div>
+    <!--row end-->
+</div>
+<!--container end-->
+
+
+{%endblock content%}
+
+

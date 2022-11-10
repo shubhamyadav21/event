@@ -1,0 +1,101 @@
+{%extends 'games/base.html' %}
+
+{%block content%}
+
+<section class="container-fluid bg mb-4">
+    <section class="row justify-content-center ">
+        <section class="col-12 col-sm-6 col-md-3 ">
+
+            <form class="form-container" method="POST" action="">
+                {% csrf_token %}
+                {%if error%}
+                <div class="alert alert-danger" role="alert" id="no">
+                  {{error}}
+                </div>
+                {%endif%}
+                <div class="card-header rounded-pill">
+                    SIGNUP
+                </div>
+                <hr style="height: 5px;">
+                
+
+             
+                <div class="row">
+                    <!--First Name-->
+
+                    <div class="col">
+                        <div class="form-group ">
+                            <label for="" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="FName" name="fname" value="{{values.first_name}}">
+                        </div>
+                    </div>
+
+                    <!--Last Name-->
+
+                    <div class="col">
+                        <div class="form-group ">
+                            <label for="" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="LName" name="lname" value="{{values.last_name}}">
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div class="row">
+                    <!--College Name-->
+
+                    <div class="col">
+                        <div class="form-group ">
+                            <label for="" class="form-label">College Name</label>
+                            <input type="text" class="form-control" id="exampleInputclg" name="clgname" value="{{values.college}}">
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <!--Phone Number-->
+
+                        <div class="form-group ">
+                            <label for="" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="phonenumber" name="call" value="{{values.phone}}">
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <!--Email Address-->
+
+                <div class="form-group ">
+                    <label for="" class="form-label">Email address</label>
+                    <input required type="email" class="form-control" id="exampleInputEmail" name="eaddress" value="{{values.email}}">
+                </div>
+
+                <!--Password-->
+
+                    <div class="form-group ">
+                        <label for="" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" name="pass1">
+                    </div>
+
+                    <div class="form-group ">
+                        <label for="" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="exampleInputConfirmPassword" name="pass2">
+                    </div>
+
+
+                    <div class=" form-btn  ">
+                        <input type="submit" class="w-100 btn btn-outline-dark btn-lg rounded-pill" value="Submit">
+                    </div>
+
+
+            </form>
+        </section>
+    </section>
+</section>
+
+
+{%endblock content%}
+

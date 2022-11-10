@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <link rel="stylesheet" href="{% static 'games/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'games/css/bootstrap.css' %}">
+
+
+    <link rel="stylesheet" href="{% static 'games/css/games.css' %}">
+
+</head>
+
+<body>
+
+    <!------------ Navbar start------------->
+    <nav class="navbar navbar-expand-lg navbar-light ">
+        <div class="container-fluid ">
+
+            <a class="navbar-brand" href="#"><i class="fa fa-award" style="color: rgba(252, 5, 5, 0.911);"></i> EVENT
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!--------------------------------------- home --------------------------------------->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto  ">
+                    <li class="nav-item">
+                        <a class="nav-link active {{home}}" aria-current="page" href="{% url 'home' %}"><i
+                                class="fas fa-home"></i>
+                            Home</a>
+                    </li>
+
+                    <!----------------------------------- About us link -------------------------------->
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'about' %}"> <i class="fas fa-user-friends"></i> About
+                            Us</a>
+                    </li>
+
+
+                    <!----------------------------------- Contact us link -------------------------------->
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#contact"> <i class="fas fa-address-book"></i> Contact Us</a>
+                    </li>
+
+                    <!------------------------------ Mega Dropdown  Winners -------------------------->
+                    <li class="nav-item dropdown menu-area">
+                        <a class="nav-link active dropdown-toggle" href="" id="mega-one" data-bs-toggle="dropdown"
+                            aria-expanded="false"> <i class="fas fa-trophy"></i> Winners
+                        </a>
+
+                        <div class="dropdown-menu  mega-area" aria-labelledby="mega-one">
+                            <div class="row">
+
+                                <div class="col">
+                                    <h5 class="megaheader">INDOOR</h5>
+                                    <a href="#" class="dropdown-item">Ludo</a>
+                                    <a href="#" class="dropdown-item">Carrom</a>
+                                    <a href="#" class="dropdown-item">Chess</a>
+
+                                </div>
+
+                                <div class="col">
+                                    <h5 class="megaheader">OUTDOOR</h5>
+                                    <a href="#" class="dropdown-item">Cricket</a>
+                                    <a href="#" class="dropdown-item">Kho-Kho</a>
+                                    <a href="#" class="dropdown-item">Football</a>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav">
+                    <!------------------------- Mygame -------------------->
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/mygame">MyGame
+                            <span class="badge badge-info"
+                                style="color: red;"><strong>{{request.session.mygame.keys|length}}</strong></span>
+                        </a>
+                    </li>
+
+                    {%if request.session.gamers_id %}
+
+                    <!------------------------- Myevent -------------------->
+                    <!--
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/myevent">MyEvent</a>   
+                    </li>-->
+
+
+                    <!------------------------- logout -------------------->
+
+                    <li class="nav-item">
+
+                        <a class="nav-link active" aria-current="page" href="/logout">Logout</a>
+
+                    </li>
+
+
+                    {%else%}
+
+
+
+                    <!------------------------- singnup -------------------->
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/signup">SignUp</a>
+                    </li>
+                    <!------------------------- login -------------------->
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/login">LogIn</a>
+                    </li>
+
+                    {%endif%}
+                </ul>
+
+
+
+            </div>
+        </div>
+    </nav>
+    <!----------Navbar end ---------->
+
+    {%block content%} {%endblock content%}
+
+
+    <!--------------------- comment box or address start -------------------------->
+    <section id="contact" style="background-color: darkgray;">
+        <div class="container">
+            <div class="row text-center clearflix">
+                <div class="col-sm-12 col-sm-offset-2">
+                    <div class="contact-heading">
+                        <h2 class="title-contact">
+                            <hr>
+                            <hr style="height: 10px; ">
+                            <i class="fas fa-headset"></i> Get In Touch
+                            <hr style="height: 10px; ">
+                            <hr>
+                        </h2>
+                        <p>We Are Always Happy To Help</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="contact-details">
+                <div class="row text-center clearflix">
+
+                    <div class="col-sm-6">
+
+
+
+                        <form method="POST" action="{% url 'review' %}">
+                            {% csrf_token %}
+
+                            <div class=" card contact-address">
+                                <h4 class="title-two"> Feedback Form</h4>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group ">
+                                            <label for="exampleInputName" class="form-label"> <i
+                                                    class="fas fa-user"></i>
+                                                Full Name</label>
+                                            <input type="text" class="form-control rounded-pill" id="exampleInputName"
+                                                name="fullname" required>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group ">
+                                            <label for="exampleInputEmail1" class="form-label"> <i
+                                                    class="fas fa-envelope"></i>
+                                                Email address</label>
+                                            <input type="email" class="form-control rounded-pill" id="emailexampleInput"
+                                                aria-describedby="emailHelp" name="ename" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="floatingTextarea2"><i class="fas fa-comment-dots "></i>
+                                            Review</label>
+                                        <textarea class="form-control rounded-pill" placeholder="Write something...."
+                                            id="floatingTextarea2" style="height: 75px" name="review"
+                                            required></textarea>
+                                    </div>
+
+                                    <div class="star">
+                                        <h4>Rate</h4>
+
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                id="rate1" value="1" required>
+                                            <label class="form-check-label" for="inlineRadio1">1</label>
+
+                                        </div>
+
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                id="rate2" value="2" required>
+                                            <label class="form-check-label" for="inlineRadio2">2</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                id="rate3" value="3" required>
+                                            <label class="form-check-label" for="inlineRadio3">3</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                id="rate4" value="4" required>
+                                            <label class="form-check-label" for="inlineRadio4">4</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                id="rate5" value="5" required>
+                                            <label class="form-check-label" for="inlineRadio5">5</label>
+                                        </div>
+                                    </div>
+
+                                    <div class=" form-btn">
+                                        <button type="submit" class="w-50 btn btn-success rounded-pill "
+                                            style="  margin-top: 3vh; "
+                                            onclick="alert('Thanks For Your FeedBack...........')">
+                                            Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        </form>
+
+
+
+
+
+
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class=" card contact-address">
+                            <iframe class="googlemap"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60282.84738872428!2d73.06453877910157!3d19.
+                                         209263099999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be795df17780f55%3A0x85f8cfe65447007a!2s
+                                         The%20SIA%20College%20Of%20Higher%20Education!5e0!3m2!1sen!2sin!4v1613733550628!5m2!1sen!2sin"
+                                width="100%" height="100%" frameborder="0" allowfullscreen="" aria-hidden="false"
+                                tabindex="0">
+                            </iframe>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--------------------- comment box or address start End -------------------------->
+
+    <!--------------------------- ----   footer     ---------------------------->
+    <footer class="py-3 bg-dark text-white">
+        <div class="container">
+            <div class="row ">
+
+                <div class="col">
+                    Copyright 2016
+                </div>
+                <div class="col">
+                    Terms & Conditions
+                </div>
+                <div class="col">
+                    <div class="col">
+                        Privacy Policy
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <!--------------------------- ----   footer   End  ---------------------------->
+
+    <!------------------------ To top start  ----------------------->
+
+    <div class="totop">
+        <a href="#" id="toTop" style="display: block;">
+            <span id="toTopHover" style="opacity: 1;"></span>
+            <i class="fas fa-chevron-up"></i>
+        </a>
+    </div>
+
+
+
+
+    <script src="{%static 'games/js/jquery.js' %}"></script>
+    <script src="{%static 'games/js/popper.js' %}"></script>
+    <script src="{%static 'games/js/bootstrap.js' %}"></script>
+    <script src="{%static 'games/js/all.min.js' %}"></script>
+
+</body>
+
+</html>
